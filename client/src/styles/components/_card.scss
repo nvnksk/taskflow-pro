@@ -1,0 +1,14 @@
+@use '../variables/colors' as *;
+@use '../variables/spacing' as *;
+
+.card {
+  background-color: $color-white;
+  border-radius: $border-radius-lg;
+  box-shadow: $shadow-base;
+  padding: $spacing-4;
+  transition: box-shadow 0.2s;
+
+  &:hover {
+    box-shadow: $shadow-lg;
+  }
+}

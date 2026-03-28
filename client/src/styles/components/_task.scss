@@ -1,0 +1,66 @@
+@use '../variables/colors' as *;
+@use '../variables/spacing' as *;
+@use '../mixins/flexbox' as *;
+
+.task-item {
+  @include flex-between;
+  margin-bottom: $spacing-3;
+
+  &--completed {
+    opacity: 0.6;
+
+    .task-item__title {
+      text-decoration: line-through;
+    }
+  }
+
+  &__content {
+    @include flex-row;
+    align-items: flex-start;
+    gap: $spacing-3;
+    flex: 1;
+  }
+
+  &__checkbox {
+    margin-top: $spacing-1;
+  }
+
+  &__details {
+    flex: 1;
+  }
+
+  &__title {
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: $spacing-1;
+  }
+
+  &__description {
+    font-size: 0.875rem;
+    color: $color-text-secondary;
+    margin-bottom: $spacing-1;
+  }
+
+  &__priority {
+    font-size: 0.75rem;
+    padding: 2px 8px;
+    border-radius: 12px;
+    font-weight: 500;
+
+    &--low { background-color: $color-gray-200; color: $color-gray-700; }
+    &--medium { background-color: lighten($color-warning, 25%); color: darken($color-warning, 20%); }
+    &--high { background-color: lighten($color-danger, 30%); color: $color-danger; }
+  }
+
+  &__actions {
+    margin-left: $spacing-4;
+  }
+}
+
+.task-list {
+  &__loading, &__empty {
+    text-align: center;
+    padding: $spacing-8;
+    color: $color-text-muted;
+  }
+}

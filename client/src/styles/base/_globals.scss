@@ -1,0 +1,25 @@
+@use '../variables/colors' as *;
+
+body {
+  background-color: $color-bg-primary;
+}
+
+#root {
+  min-height: 100vh;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+::selection {
+  background-color: $color-primary;
+  color: $color-white;
+}
+
+:focus-visible {
+  outline: 2px solid $color-primary;
+  outline-offset: 2px;
+}

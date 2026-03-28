@@ -1,0 +1,40 @@
+@mixin fade-in($duration: 0.3s) {
+  animation: fadeIn $duration ease-in-out;
+}
+
+@mixin slide-in($direction: 'left', $duration: 0.3s) {
+  @if $direction == 'left' {
+    animation: slideInLeft $duration ease-in-out;
+  } @else if $direction == 'right' {
+    animation: slideInRight $duration ease-in-out;
+  } @else if $direction == 'up' {
+    animation: slideInUp $duration ease-in-out;
+  } @else if $direction == 'down' {
+    animation: slideInDown $duration ease-in-out;
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideInLeft {
+  from { transform: translateX(-20px); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
+}
+
+@keyframes slideInRight {
+  from { transform: translateX(20px); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
+}
+
+@keyframes slideInUp {
+  from { transform: translateY(20px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes slideInDown {
+  from { transform: translateY(-20px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}

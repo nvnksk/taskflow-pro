@@ -1,0 +1,71 @@
+version: '3.8'
+
+services:
+  mongodb:
+    image: mongo:7.0
+    container_name: taskflow-mongo
+    ports:
+      - '27017:27017'
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: admin
+      MONGO_INITDB_ROOT_PASSWORD: password123
+      MONGO_INITDB_DB: taskflow
+    volumes:
+      - mongo_data:/data/db
+    networks:
+      - taskflow-network
+
+  server:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile.server
+    container_name: taskflow-server
+    ports:
+      - '3001:3001'
+    environment:
+      MONGODB_URI: mongodb://admin:password123@mongodb:27017/taskflow
+      JWT_SECRET: your_jwt_secret_key
+      NODE_ENV: development
+    depends_on:
+      - mongodb
+    networks:
+      - taskflow-network
+    volumes:
+      - ./server:/app/server
+
+  client:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile.client
+    container_name: taskflow-client
+    ports:
+      - '3000:3000'
+    environment:
+      REACT_APP_API_URL: http://localhost:3001
+    depends_on:
+      - server
+    networks:
+      - taskflow-network
+    volumes:
+      - ./client:/app/client
+
+  nginx:
+    image: nginx:alpine
+    container_name: taskflow-nginx
+    ports:
+      - '80:80'
+      - '443:443'
+    volumes:
+      - ./docker/nginx.conf:/etc/nginx/nginx.conf:ro
+    depends_on:
+      - client
+      - server
+    networks:
+      - taskflow-network
+
+volumes:
+  mongo_data:
+
+networks:
+  taskflow-network:
+    driver: bridge

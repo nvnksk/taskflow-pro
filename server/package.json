@@ -1,1 +1,41 @@
-{\n  \"name\": \"taskflow-pro\",\n  \"version\": \"1.0.0\",\n  \"description\": \"Backend API for Taskflow Project\",\n  \"main\": \"index.js\",\n  \"scripts\": {\n    \"start\": \"node index.js\",\n    \"test\": \"jest\"\n  },\n  \"dependencies\": {\n    \"next\": \"14.0.0\",\n    \"mongodb\": \"^5.0.0\",\n    \"mongoose\": \"^6.0.0\",\n    \"jsonwebtoken\": \"^9.0.0\",\n    \"bcryptjs\": \"^2.4.3\"\n  },\n  \"devDependencies\": {\n    \"zod\": \"^3.20.0\",\n    \"jest\": \"^27.0.0\"\n  },\n  \"engines\": {\n    \"node\": ">=14.0.0"\n  }\n}
+{
+  "name": "taskflow-pro-server",
+  "version": "1.0.0",
+  "description": "Next.js backend API for TaskFlow Pro",
+  "scripts": {
+    "dev": "next dev -p 3001",
+    "build": "next build",
+    "start": "next start -p 3001",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage",
+    "lint": "eslint src/",
+    "format": "prettier --write src/"
+  },
+  "dependencies": {
+    "next": "^14.0.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "mongodb": "^5.8.0",
+    "mongoose": "^7.0.0",
+    "jsonwebtoken": "^9.0.0",
+    "bcryptjs": "^2.4.3",
+    "zod": "^3.21.0",
+    "dotenv": "^16.0.3",
+    "cors": "^2.8.5",
+    "helmet": "^7.0.0"
+  },
+  "devDependencies": {
+    "jest": "^29.5.0",
+    "@testing-library/react": "^14.0.0",
+    "typescript": "^5.0.0",
+    "@types/node": "^20.0.0",
+    "@types/react": "^18.2.0",
+    "@types/mongoose": "^5.11.97",
+    "eslint": "^8.45.0",
+    "prettier": "^3.0.0"
+  },
+  "engines": {
+    "node": ">=16.0.0"
+  }
+}
